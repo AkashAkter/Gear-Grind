@@ -1,20 +1,42 @@
 import React from "react";
-import {
-  View,
-  Image,
-  StyleSheet,
-  ScrollView,
-  Text,
-  ImageBackground,
-} from "react-native";
+import { View, Image, StyleSheet, Text, ImageBackground } from "react-native";
 import { images } from "../../../constants";
+const imageSource = images.engineComponent;
+
+const data = [
+  { id: 1, name: "Product Name", image: imageSource },
+  { id: 2, name: "Product Name", image: imageSource },
+  { id: 3, name: "Product Name", image: imageSource },
+  { id: 4, name: "Product Name", image: imageSource },
+  { id: 5, name: "Product Name", image: imageSource },
+  { id: 6, name: "Product Name", image: imageSource },
+  { id: 7, name: "Product Name", image: imageSource },
+  { id: 8, name: "Product Name", image: imageSource },
+  { id: 9, name: "Product Name", image: imageSource },
+  { id: 10, name: "Product Name", image: imageSource },
+  { id: 11, name: "Product Name", image: imageSource },
+  { id: 12, name: "Product Name", image: imageSource },
+  { id: 13, name: "Product Name", image: imageSource },
+  { id: 14, name: "Product Name", image: imageSource },
+  { id: 15, name: "Product Name", image: imageSource },
+  { id: 16, name: "Product Name", image: imageSource },
+  { id: 17, name: "Product Name", image: imageSource },
+
+  // Add more data objects for other products
+];
+
+const Card = ({ name, image }) => (
+  <View style={styles.card}>
+    <Image source={image} style={styles.image} />
+    <Text style={styles.name}>{name}</Text>
+  </View>
+);
 
 const Exterior = () => {
   // Image source
-  const imageSource = images.engineComponent;
 
   return (
-    <View>
+    <View style={{ marginVertical: 20 }}>
       <View>
         <ImageBackground
           source={images.performanceParts}
@@ -26,22 +48,13 @@ const Exterior = () => {
           </View>
         </ImageBackground>
       </View>
-      <ScrollView contentContainerStyle={styles.container}>
-        {Array.from({ length: 16 }).map((_, index) => (
-          <View key={index} style={styles.card}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={imageSource}
-                style={styles.image}
-                resizeMode="cover"
-              />
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.productName}>Name</Text>
-            </View>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.container}>
+        <View style={styles.cardContainer}>
+          {data.map((item) => (
+            <Card key={item.id} name={item.name} image={item.image} />
+          ))}
+        </View>
+      </View>
     </View>
   );
 };
@@ -68,40 +81,35 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
   container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: "#fff",
+  },
+  cardContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    gap: 6,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
   },
   card: {
-    width: "20%", // Adjust the width as needed for 4 cards per row
-    marginBottom: 10,
-    borderRadius: 10,
-    backgroundColor: "#FFFFFF",
-    elevation: 3,
-  },
-  imageContainer: {
-    width: "100%",
-    aspectRatio: 1, // Ensure the image container is square
-    borderRadius: 50, // Half of the width/height to make it circular
-    overflow: "hidden", // Clip the image to the rounded border
-    borderWidth: 2, // Add border width
-    borderColor: "gray", // Add border color
+    width: "24%", // Adjust as per your design
+    marginVertical: 5,
+    alignItems: "center",
   },
   image: {
-    width: "100%",
-    height: "100%", // Ensure the image fills the container
-    borderRadius: 50, // Apply border radius to make it circular
+    width: 80,
+    height: 80,
+    borderRadius: 40, // To make it circular
+    borderWidth: 1,
+    borderColor: "#ccc", // Light border color
   },
-  textContainer: {
-    padding: 10,
-  },
-  productName: {
-    fontSize: 16,
-    fontWeight: "bold",
+  name: {
+    marginTop: 5,
     textAlign: "center",
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 });
 

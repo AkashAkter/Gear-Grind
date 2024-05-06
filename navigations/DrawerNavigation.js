@@ -1,6 +1,9 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  DrawerItemList,
+  createDrawerNavigator,
+} from "@react-navigation/drawer";
 import { COLORS, images } from "../constants";
 import { Ionicons, AntDesign, Feather } from "@expo/vector-icons";
 import BottomTabNavigation from "./BottomTabNavigation";
@@ -10,7 +13,7 @@ import {
   Notifications,
   Orders,
   PaymentMethod,
-  Profile,
+  Register,
   Search,
 } from "../screens";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -20,40 +23,42 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-
-      drawerContent={
-        (props)=>{
-            return (
-                <SafeAreaView>
-                    <View style={{
-                        height: 200,
-                        width: "100%",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: COLORS.white
-                    }}>
-                        <Image
-                          source={images.avatar}
-                          style={{
-                            height: 100,
-                            width: 100,
-                            borderRadius: 50,
-                            marginBottom: 12
-                          }}
-                        />
-                        <Text style={{
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            color: COLORS.black,
-                            marginBottom: 6
-                        }}>Sign in / Sign up</Text>
-                        
-                    </View>
-                    <DrawerItemList {...props} />
-                </SafeAreaView>
-            )
-        }
-      }
+      drawerContent={(props) => {
+        return (
+          <SafeAreaView>
+            <View
+              style={{
+                height: 200,
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.white,
+              }}
+            >
+              <Image
+                source={images.avatar}
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: 50,
+                  marginBottom: 12,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "bold",
+                  color: COLORS.black,
+                  marginBottom: 6,
+                }}
+              >
+                Sign in / Sign up
+              </Text>
+            </View>
+            <DrawerItemList {...props} />
+          </SafeAreaView>
+        );
+      }}
       screenOptions={{
         drawerStyle: {
           backgroundColor: COLORS.white,
@@ -160,16 +165,16 @@ const DrawerNavigation = () => {
         component={Notifications}
       />
       <Drawer.Screen
-        name="Help"
+        name="Register"
         options={{
-          drawerLabel: "Help",
-          title: "Help",
+          drawerLabel: "Register",
+          title: "Register",
           headerShadowVisible: false,
           drawerIcon: () => (
             <Feather name="help-circle" size={24} color={COLORS.black} />
           ),
         }}
-        component={Profile}
+        component={Register}
       />
     </Drawer.Navigator>
   );

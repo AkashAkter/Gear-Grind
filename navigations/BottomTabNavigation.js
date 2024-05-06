@@ -1,7 +1,7 @@
 import { View, Text, Image, Platform } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, Message, Orders, Profile, Collection, Favourite } from "../screens";
+import { Home, Orders, Profile, Collection, Favourite } from "../screens";
 import { COLORS, icons } from "../constants";
 
 const Tab = createBottomTabNavigator();
@@ -98,26 +98,7 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-      
-      <Tab.Screen
-        name="Message"
-        component={Message}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Image
-                source={focused ? icons.chat : icons.chatOutline}
-                resizeMode="contain"
-                style={{
-                  height: 24,
-                  width: 24,
-                  tintColor: focused ? COLORS.primary : COLORS.black,
-                }}
-              />
-            );
-          },
-        }}
-      />
+
       <Tab.Screen
         name="Profile"
         component={Profile}

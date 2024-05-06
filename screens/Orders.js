@@ -22,7 +22,9 @@ const Orders = () => {
               />
             </View>
             <Text style={styles.blackText}>Your Cart is empty</Text>
-            <Text style={styles.greyText}>There are no items added in your cart.</Text>
+            <Text style={styles.greyText}>
+              There are no items added in your cart.
+            </Text>
           </View>
         </View>
       </View>

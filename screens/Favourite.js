@@ -21,7 +21,9 @@ const Favourite = () => {
             />
           </View>
           <Text style={styles.blackText}>Your Wishlist will live here</Text>
-          <Text style={styles.greyText}>Explore variety products and add your favourite product to Wishlist</Text>
+          <Text style={styles.greyText}>
+            Explore variety products and add your favourite product to Wishlist
+          </Text>
           <Text style={styles.redText}>Start SHopping Now</Text>
         </View>
       </View>
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFFFFF",
+    marginHorizontal: 20,
   },
   imageContainer: {
     width: 200, // Adjust the width of the image container as needed
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#808080",
     marginBottom: 10,
-    textAlign:'center'
+    textAlign: "center",
   },
   redText: {
     fontSize: 16,
